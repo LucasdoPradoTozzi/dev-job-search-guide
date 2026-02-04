@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de Busca de Vagas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-row">
+            <h1>📋 Guia de Busca de Vagas</h1>
+            <button id="theme-toggle" aria-label="Alternar tema">
+                <span class="icon">🌙</span>
+            </button>
+        </div>
+        <nav class="tabs">
+            <button class="tab-button active" data-tab="linkedin">
+                LinkedIn
+            </button>
+            <button class="tab-button" data-tab="google">
+                Google
+            </button>
+            <button class="tab-button" data-tab="outros">
+                Outras Plataformas
+            </button>
+            <button class="tab-button" data-tab="dicas">
+                Dicas Gerais
+            </button>
+        </nav>
+    </header>
+
+    <main class="content">
+
+            <section id="linkedin" class="tab-content active">
+                <h2>LinkedIn - Estratégias de Busca</h2>
+                <!-- Princípio Base -->
+                <div class="card highlight-card">
+                    <h3>🎯 Regra de Ouro</h3>
+                    <blockquote>
+                        <p>A aba "Vagas" do LinkedIn não representa o mercado real.</p>
+                        <p><strong>Quem consegue entrevista busca vagas onde a maioria NÃO está olhando.</strong></p>
+                    </blockquote>
+                    <div class="focus-points">
+                        <a href="#impacto-senioridade" class="tag">Reduzir concorrência</a>
+                        <a href="#filtro-data" class="tag">Priorizar tempo de publicação</a>
+                        <a href="#publicacoes" class="tag">Contato direto com recrutador</a>
+                    </div>
+                </div>
+                <!-- Modelo Mental -->
+                <div class="card">
+                    <h3>🧠 Modelo Mental de Busca Ativa</h3>
+                    <p>Você deve:</p>
+                    <ul class="checklist">
+                        <li>✓ Construir queries específicas</li>
+                        <li>✓ Escolher conscientemente onde buscar</li>
+                        <li>✓ Priorizar tempo de publicação</li>
+                        <li>✓ Aplicar filtros de senioridade</li>
+                        <li>✓ Focar em menos vagas, mais qualidade</li>
+                    </ul>
+                    <div class="result-box">
+                        <strong>Resultado esperado:</strong> Mais entrevistas com menos esforço
+                    </div>
+                </div>
+                <!-- Busca na Aba de Vagas -->
+                <div class="section-title">
+                    <h3>📌 Busca Estratégica na Aba de Vagas</h3>
+                </div>
+                <div class="card">
+                    <h4>1. Uso de Termos Específicos</h4>
+                    <p>Utilize combinações reais usadas por recrutadores: <strong>tecnologia + cargo + senioridade</strong></p>
+                    <div class="examples">
+                        <div class="example-item">Desenvolvedor Backend PHP Laravel</div>
+                        <div class="example-item">Software Engineer Python Remote</div>
+                        <div class="example-item">Frontend React Pleno</div>
+                    </div>
+                </div>
+                <div class="card" id="impacto-senioridade">
+                    <h4>2. Filtragem por Senioridade (Essencial)</h4>
+                    <p>Aplicar filtros de senioridade reduz drasticamente a concorrência.</p>
+                    <div class="code-block">
+                        <code>"React" AND ("Pleno" OR "Pl" OR "Mid")</code>
+                    </div>
+                    <div class="code-block">
+                        <code>"React" AND NOT ("Junior" OR "Jr")</code>
+                    </div>
+                    <div class="impact-box">
+                        <strong>Impacto real:</strong> 2.719 vagas → 56 vagas<br>
+                        <span class="small-text">Mesmas empresas, muito menos concorrência</span>
+                    </div>
+                </div>
+                <div class="card" id="filtro-data">
+                    <h4>3. Filtro de Data (Prioridade Absoluta)</h4>
+                    <p>Sempre priorizar:</p>
+                    <ul>
+                        <li><strong>Últimas 24 horas</strong></li>
+                        <li><strong>Última semana</strong></li>
+                    </ul>
+                    <div class="warning-box">
+                        ⚡ Ser um dos primeiros candidatos vale mais que um currículo perfeito
+                    </div>
+                </div>
+                <!-- Publicações - Fonte Principal -->
+                <div class="section-title gold" id="publicacoes">
+                    <h3>⭐ Principal Fonte de Ouro: Publicações</h3>
+                </div>
+                <div class="card highlight-card">
+                    <p><strong>A maioria das empresas não anuncia vagas na aba de Vagas.</strong></p>
+                    <p>Publicações costumam ter:</p>
+                    <div class="benefits-grid">
+                        <div class="benefit-item">📉 Menos candidatos</div>
+                        <div class="benefit-item">✅ Vagas reais</div>
+                        <div class="benefit-item">👤 Contato direto</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h4>Query Base para Publicações</h4>
+                    <div class="code-block">
+                        <code>"Sua_tecnologia" AND "Vaga" AND ("Jr" OR "Junior" OR "Entry")</code>
+                    </div>
+                    <h5>Passo a Passo:</h5>
+                    <ol class="steps">
+                        <li>Cole a query na busca do LinkedIn</li>
+                        <li>Selecione <strong>Publicações</strong></li>
+                        <li>Ordene por <strong>Mais recentes</strong></li>
+                    </ol>
+                </div>
+                <div class="card">
+                    <h4>Queries Prontas</h4>
+                    <div class="query-section">
+                        <h5>🇧🇷 Vagas Nacionais (Júnior):</h5>
+                        <div class="code-block">
+                            <code>"Sua_tecnologia" AND "Vaga" AND NOT ("Pleno" OR "Senior" OR "Sr")</code>
+                        </div>
+                    </div>
+                    <div class="query-section">
+                        <h5>🌎 Vagas Internacionais:</h5>
+                        <div class="code-block">
+                            <code>"Sua_tecnologia" AND "hiring" AND "Latam" AND ("Junior" OR "Jr")</code>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="google" class="tab-content">
+                <h2>Google - Expansão Fora do LinkedIn</h2>
+                <div class="card">
+                    <h4>Operadores de Site no Google</h4>
+                    <p>O Google permite que você refine suas buscas usando operadores de site. Eles ajudam a incluir ou excluir resultados de determinados domínios:</p>
+                    <ul>
+                        <li><code>site:linkedin.com</code> → Mostra apenas resultados do LinkedIn.</li>
+                        <li><code>-site:linkedin.com</code> → Exclui resultados do LinkedIn, mostrando vagas em outros sites.</li>
+                    </ul>
+                    <p>Esses operadores são úteis para encontrar vagas que não estão no LinkedIn ou para buscar vagas específicas dentro do LinkedIn, mas com filtros avançados.</p>
+                </div>
+                <div class="card">
+                    <h4>1. Vagas Fora do LinkedIn</h4>
+                    <div class="code-block">
+                        <code>("Trainee" OR "Junior") AND "Sua_tecnologia" -site:linkedin.com</code>
+                    </div>
+                    <p class="info-text">Essas vagas costumam estar no site da empresa, em páginas pouco acessadas, com pouquíssimos candidatos.</p>
+                </div>
+                <div class="card">
+                    <h4>2. Vagas do LinkedIn via Google</h4>
+                    <div class="code-block">
+                        <code>site:linkedin.com ("Trainee" OR "Junior") AND "Sua_tecnologia"</code>
+                    </div>
+                    <p><strong>Após a busca:</strong> Ferramentas → Data → 24h ou 7 dias</p>
+                </div>
+            </section>
+
+            <section id="outros" class="tab-content">
+                <h2>Outras Plataformas</h2>
+                <div class="content-placeholder">
+                    <p>Conteúdo sobre outras plataformas será adicionado aqui...</p>
+                </div>
+            </section>
+
+            <section id="dicas" class="tab-content">
+                <h2>Dicas Gerais</h2>
+                <div class="card">
+                    <h3>⚙️ Operadores Booleanos</h3>
+                    <div class="operators-grid">
+                        <div class="operator-item">
+                            <code>"texto exato"</code>
+                            <span>Busca exata</span>
+                        </div>
+                        <div class="operator-item">
+                            <code>AND</code>
+                            <span>Ambos termos</span>
+                        </div>
+                        <div class="operator-item">
+                            <code>OR</code>
+                            <span>Qualquer termo</span>
+                        </div>
+                        <div class="operator-item">
+                            <code>NOT</code>
+                            <span>Excluir termo</span>
+                        </div>
+                    </div>
+                    <div class="note-box">
+                        <strong>Nota:</strong> Campo de posts tem limite aproximado de 70 caracteres
+                    </div>
+                </div>
+                <div class="card">
+                    <h4>Query Avançada (Exemplo Real)</h4>
+                    <p>O operador <code>-</code> funciona melhor que <code>AND NOT</code> em publicações:</p>
+                    <div class="code-block multiline">
+                        <code>"vaga" AND "Java" AND "Spring Boot"<br>
+("Junior" OR "JR" OR "Entry")<br>
+-Senior -SR -PL -Mid -Pleno -Lead -hibrido -presencial -hola</code>
+                    </div>
+                    <div class="advantages">
+                        <strong>Vantagens:</strong>
+                        <ul>
+                            <li>Não estoura limite de caracteres</li>
+                            <li>Filtros mais agressivos</li>
+                            <li>Resultados mais limpos</li>
+                        </ul>
+                    </div>
+                    <p class="warning-text">⚠️ Palavras com acento não são filtradas corretamente</p>
+                </div>
+                <div class="section-title">
+                    <h3>📅 Estratégia de Rotina (Playbook)</h3>
+                </div>
+                <div class="routine-grid">
+                    <div class="card routine-card">
+                        <h4>📆 Diário (30-40 minutos)</h4>
+                        <ul>
+                            <li>LinkedIn → Publicações → Mais recentes</li>
+                            <li>Executar 2-3 queries bem ajustadas</li>
+                            <li>Candidatar-se rapidamente</li>
+                        </ul>
+                    </div>
+                    <div class="card routine-card">
+                        <h4>📊 Semanal</h4>
+                        <ul>
+                            <li>Ajustar queries</li>
+                            <li>Salvar buscas no LinkedIn</li>
+                            <li>Executar buscas no Google</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card checklist-card">
+                    <h3>✅ Checklist Rápido</h3>
+                    <ul class="final-checklist">
+                        <li><input type="checkbox"> Query específica</li>
+                        <li><input type="checkbox"> Senioridade filtrada</li>
+                        <li><input type="checkbox"> Data recente</li>
+                        <li><input type="checkbox"> Busca em publicações</li>
+                        <li><input type="checkbox"> Busca no Google</li>
+                        <li><input type="checkbox"> Poucas vagas, alta qualidade</li>
+                    </ul>
+                </div>
+                <div class="card avoid-card">
+                    <h3>❌ O Que Evitar</h3>
+                    <ul class="avoid-list">
+                        <li>Aplicar somente pela aba Vagas</li>
+                        <li>Ignorar a data da publicação</li>
+                        <li>Usar termos genéricos</li>
+                        <li>Competir em vagas com centenas de candidatos</li>
+                        <li>Usar muitas queries mal definidas</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="outros" class="tab-content">
+                <h2>Outras Plataformas</h2>
+                <div class="content-placeholder">
+                    <p>Conteúdo sobre outras plataformas será adicionado aqui...</p>
+                </div>
+            </section>
+
+            <section id="dicas" class="tab-content">
+                <h2>Dicas Gerais</h2>
+                <div class="content-placeholder">
+                    <p>Dicas gerais de busca de vagas serão adicionadas aqui...</p>
+                </div>
+            </section>
+        </main>
+
+    <footer>
+        <p>Guia de Busca de Vagas • 2026</p>
+    </footer>
+
+        <button id="about-btn" title="Sobre" aria-label="Sobre">?</button>
+        <div id="about-modal" tabindex="-1" aria-modal="true" role="dialog">
+            <div class="about-modal-content">
+                <button id="about-modal-close" title="Fechar" aria-label="Fechar">×</button>
+                <h2>Sobre este projeto</h2>
+                <p>Esta página foi criada para ajudar desenvolvedores a conseguir emprego, reunindo dicas práticas e estratégias de busca de vagas.</p>
+                <div class="about-contact">
+                    <strong>Caso tenha sugestões:</strong><br>
+                    GitHub: <a href="https://github.com/LucasdoPradoTozzi" target="_blank" rel="noopener">LucasdoPradoTozzi</a><br>
+                    Email: <a href="mailto:lucaspradodev@gmail.com">lucaspradodev@gmail.com</a><br>
+                    LinkedIn: <a href="https://www.linkedin.com/in/lucas-do-prado-tozzi-dev-backend/" target="_blank" rel="noopener">lucas-do-prado-tozzi-dev-backend</a>
+                </div>
+                <div class="about-contact">
+                    <small>Este projeto estará disponível em <br><b>https://lucasdopradotozzi.github.io/dev-job-search-guide/</b></small>
+                </div>
+            </div>
+        </div>
+        <button id="back-to-top" title="Voltar ao topo" aria-label="Voltar ao topo">↑</button>
+    <script src="script.js"></script>
+</body>
+</html>
