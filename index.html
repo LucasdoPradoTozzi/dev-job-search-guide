@@ -15,7 +15,16 @@
             </button>
         </div>
         <nav class="tabs">
-            <button class="tab-button active" data-tab="linkedin">
+            <button class="tab-button active" data-tab="config">
+                ⚙️ Configurar
+            </button>
+            <button class="tab-button" data-tab="diaria">
+                📆 Procura Diária
+            </button>
+            <button class="tab-button" data-tab="semanal">
+                📊 Procura Semanal
+            </button>
+            <button class="tab-button" data-tab="linkedin">
                 LinkedIn
             </button>
             <button class="tab-button" data-tab="google">
@@ -32,7 +41,233 @@
 
     <main class="content">
 
-            <section id="linkedin" class="tab-content active">
+            <section id="config" class="tab-content active">
+                <h2>⚙️ Configure sua Busca</h2>
+                
+                <div class="card highlight-card">
+                    <h3>📝 Adapte os exemplos às suas necessidades</h3>
+                    <p>Configure suas tecnologias, senioridades e preferências. Todas as queries do site serão adaptadas automaticamente.</p>
+                </div>
+
+                <div class="card" style="background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%); color: white; padding: 1.5rem;">
+                    <h3 style="margin: 0 0 0.5rem 0; color: white;">⚠️ Site Estático</h3>
+                    <p style="margin: 0; font-size: 0.95rem; opacity: 0.95;">
+                        Este site não possui banco de dados. Suas configurações são salvas no navegador (localStorage), mas podem ser perdidas ao limpar dados.
+                        <strong>Recomendamos exportar suas configurações em JSON para backup!</strong>
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+                        <button id="export-config" class="config-action-btn" style="background: var(--accent-color); color: white;">
+                            📥 Exportar Configuração (JSON)
+                        </button>
+                        <button id="import-config" class="config-action-btn" style="background: #10b981; color: white;">
+                            📤 Importar Configuração (JSON)
+                        </button>
+                        <input type="file" id="import-file" accept=".json" style="display: none;">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>💻 Grupos de Tecnologias</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1rem;">
+                        Crie grupos de tecnologias relacionadas. Cada grupo gera queries separadas (importante: LinkedIn aceita no máximo 2 tecnologias por query).
+                    </p>
+                    <div id="tech-groups-container"></div>
+                    <button id="add-tech-group" class="add-btn" style="width: 100%; margin-top: 1rem;">+ Adicionar Novo Grupo</button>
+                </div>
+
+                <div class="card">
+                    <h3>🎯 Senioridade</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1rem;">
+                        Níveis de senioridade que você busca (ex: Junior, Pleno, Mid, Senior...)
+                    </p>
+                    <div class="config-input-group">
+                        <input type="text" id="seniority-input" placeholder="Digite um nível e pressione Enter">
+                        <button id="add-seniority" class="add-btn">+ Adicionar</button>
+                    </div>
+                    <div id="seniority-list" class="tags-list"></div>
+                </div>
+
+                <div class="card">
+                    <h3>📍 Localização</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1rem;">
+                        Preferência de trabalho
+                    </p>
+                    <div class="config-input-group">
+                        <select id="location-type" style="padding: 0.75rem; border-radius: 8px; border: 2px solid var(--border-color); background: var(--bg-primary); color: var(--text-primary); font-size: 1rem; width: 100%;">
+                            <option value="remoto">Remoto</option>
+                            <option value="hibrido">Híbrido</option>
+                            <option value="presencial">Presencial</option>
+                        </select>
+                    </div>
+                    <div id="city-group" style="margin-top: 1rem; display: none;">
+                        <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0.5rem;">Cidade(s):</p>
+                        <div class="config-input-group">
+                            <input type="text" id="city-input" placeholder="Digite uma cidade e pressione Enter">
+                            <button id="add-city" class="add-btn">+ Adicionar</button>
+                        </div>
+                        <div id="city-list" class="tags-list"></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>🔍 Termos de Busca Personalizados</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1rem;">
+                        Palavras-chave adicionais para suas buscas (ex: remote, full-time, contratando, hiring...)
+                    </p>
+                    <div class="config-input-group">
+                        <input type="text" id="keyword-input" placeholder="Digite uma palavra-chave e pressione Enter">
+                        <button id="add-keyword" class="add-btn">+ Adicionar</button>
+                    </div>
+                    <div id="keyword-list" class="tags-list"></div>
+                </div>
+
+                <div class="card" style="text-align: center; padding: 2rem;">
+                    <button id="apply-config" class="config-action-btn" style="background: linear-gradient(135deg, var(--accent-color) 0%, #667eea 100%); color: white; font-size: 1.1rem; padding: 1rem 2rem;">
+                        ✨ Aplicar Configurações e Gerar Queries
+                    </button>
+                </div>
+            </section>
+
+            <section id="diaria" class="tab-content">
+                <h2>📆 Rotina Diária - 15 minutos</h2>
+                <div style="margin-bottom: 1rem;">
+                    <button id="reset-diaria" class="config-action-btn" style="background: #ef4444; color: white; font-size: 0.9rem; padding: 0.5rem 1rem;">🔄 Resetar Dia</button>
+                </div>
+                
+                <div class="card highlight-card">
+                    <h3>🏆 Prioridade: LinkedIn Posts (Menos Concorrência!)</h3>
+                    <p><strong>Executar em:</strong> <code>linkedin.com</code> (busca principal do topo)</p>
+                    <p><strong>Filtros:</strong> Aba "Publicações" → "Mais recente"</p>
+                    <p><strong>💡 Limitações do LinkedIn:</strong></p>
+                    <ul style="margin-top: 0.5rem; font-size: 0.95rem;">
+                        <li>⚠️ Máximo 2 OR por grupo (mais que isso, a busca quebra)</li>
+                        <li>✅ Usar <strong>filtros visuais</strong> para senioridade, NÃO na query</li>
+                        <li>✅ Termos simples funcionam melhor que termos "corretos"</li>
+                    </ul>
+                </div>
+
+                <div id="linkedin-posts-queries"></div>
+
+                <div class="card highlight-card">
+                    <h3>📋 LinkedIn Jobs Board</h3>
+                    <p><strong>Executar em:</strong> <code>linkedin.com/jobs</code></p>
+                    <p><strong>Filtros OBRIGATÓRIOS:</strong></p>
+                    <ul style="margin-top: 0.5rem; font-size: 0.95rem;">
+                        <li>📅 Data: <strong>Última semana</strong></li>
+                        <li>📍 Local: <strong>Remote</strong> ou <strong>Anywhere</strong></li>
+                        <li>🎯 Nível: <strong>Entry level</strong>, <strong>Mid-Senior</strong> (conforme sua busca)</li>
+                    </ul>
+                </div>
+
+                <div id="linkedin-jobs-queries"></div>
+
+                <div class="card highlight-card">
+                    <h3> Sites de Empresas (Menos Concorrência!)</h3>
+                    <p><strong>Executar em:</strong> <code>google.com</code></p>
+                    <p><strong>Filtros:</strong> Ferramentas → Quando → Última semana</p>
+                    <p><strong>Buscar:</strong> careers.empresa.com, greenhouse.io, lever.co, apply.workable.com</p>
+                </div>
+
+                <div id="google-company-queries"></div>
+
+                <div class="card">
+                    <h3>⚡ Checklist Final</h3>
+                    <div id="checklist-final-container">
+                        <ul class="simple-checklist">
+                            <li><input type="checkbox" id="diaria-check-1"> <label for="diaria-check-1">Posts: 3 queries executadas</label></li>
+                            <li><input type="checkbox" id="diaria-check-2"> <label for="diaria-check-2">Jobs: 2 queries + filtros visuais aplicados</label></li>
+                            <li><input type="checkbox" id="diaria-check-3"> <label for="diaria-check-3">Google: 1 query + filtro de data</label></li>
+                            <li><input type="checkbox" id="diaria-check-4"> <label for="diaria-check-4">Candidaturas enviadas</label></li>
+                        </ul>
+                    </div>
+                    <div id="congratulations-message" style="display: none; text-align: center; padding: 2rem; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border-radius: 8px; margin-top: 1rem;">
+                        <h4 style="margin: 0 0 0.5rem 0;">🎉 Parabéns!</h4>
+                        <p style="margin: 0; font-size: 1.1rem;">Você concluiu todas as tarefas diárias!</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="semanal" class="tab-content">
+                <h2>📊 Rotina Semanal - 30-40 minutos</h2>
+                <div style="margin-bottom: 1rem;">
+                    <button id="reset-semanal" class="config-action-btn" style="background: #ef4444; color: white; font-size: 0.9rem; padding: 0.5rem 1rem;">🔄 Resetar Semana</button>
+                </div>
+                
+                <div class="card highlight-card">
+                    <h3>🦆 DuckDuckGo - Job Boards Alternativos</h3>
+                    <p><strong>Executar em:</strong> <code>duckduckgo.com</code></p>
+                    <p><strong>Objetivo:</strong> Explorar Indeed, Glassdoor, Dice, Stack Overflow Jobs</p>
+                    <p style="margin-top: 0.5rem; font-size: 0.95rem;">
+                        💡 DuckDuckGo também suporta queries complexas.
+                    </p>
+                </div>
+
+                <div id="duckduckgo-queries"></div>
+
+                <div class="card highlight-card">
+                    <h3>🏙️ Busca Híbrida por Cidade</h3>
+                    <p><strong>Executar em:</strong> <code>google.com</code> ou <code>duckduckgo.com</code></p>
+                    <p><strong>Objetivo:</strong> Encontrar vagas híbridas/presenciais em cidades específicas</p>
+                </div>
+
+                <div id="hybrid-city-queries"></div>
+
+                <div class="card">
+                    <h3>🌎 Plataformas Internacionais Remotas</h3>
+                    <p>Visitar e filtrar por sua stack (marque após buscar):</p>
+                    <ul class="simple-checklist">
+                        <li>
+                            <input type="checkbox" id="semanal-3">
+                            <label for="semanal-3">
+                                <strong>Remotive.io</strong> → 
+                                <a href="https://remotive.com/remote-jobs/software-dev" target="_blank" rel="noopener">remotive.com/remote-jobs/software-dev</a>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="semanal-4">
+                            <label for="semanal-4">
+                                <strong>We Work Remotely</strong> → 
+                                <a href="https://weworkremotely.com/categories/remote-back-end-programming-jobs" target="_blank" rel="noopener">weworkremotely.com/remote-back-end-programming-jobs</a>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="semanal-5">
+                            <label for="semanal-5">
+                                <strong>Remote OK</strong> → 
+                                <a href="https://remoteok.com/remote-dev-jobs" target="_blank" rel="noopener">remoteok.com/remote-dev-jobs</a>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>� Regras Práticas do LinkedIn (Resumo)</h3>
+                    <ul class="compact-list" style="font-size: 1rem;">
+                        <li>✅ <strong>Máximo 2 OR por grupo</strong> - mais que isso quebra a busca</li>
+                        <li>✅ <strong>Evitar aspas desnecessárias</strong> - motor simplificado ignora</li>
+                        <li>✅ <strong>Stack OU senioridade no texto</strong>, nunca os dois</li>
+                        <li>✅ <strong>Preferir filtros visuais</strong> para senioridade</li>
+                        <li>✅ <strong>Termos genéricos</strong> funcionam melhor que termos "corretos"</li>
+                        <li>❌ <strong>Google/DuckDuckGo não têm essas limitações</strong> - abuse lá!</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>�🔧 Manutenção e Otimização Semanal</h3>
+                    <ul class="simple-checklist">
+                        <li><input type="checkbox" id="semanal-check-1"> <label for="semanal-check-1">Revisar e ajustar queries conforme resultados</label></li>
+                        <li><input type="checkbox" id="semanal-check-2"> <label for="semanal-check-2">Salvar buscas recorrentes no LinkedIn</label></li>
+                        <li><input type="checkbox" id="semanal-check-3"> <label for="semanal-check-3">Seguir recrutadores e empresas que postaram vagas</label></li>
+                        <li><input type="checkbox" id="semanal-check-4"> <label for="semanal-check-4">Atualizar currículo e perfil do LinkedIn</label></li>
+                        <li><input type="checkbox" id="semanal-check-5"> <label for="semanal-check-5">Criar alertas de vagas nos job boards</label></li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="linkedin" class="tab-content">
                 <h2>LinkedIn - Estratégias de Busca</h2>
                 <!-- Princípio Base -->
                 <div class="card highlight-card">
@@ -77,16 +312,19 @@
                 </div>
                 <div class="card" id="impacto-senioridade">
                     <h4>2. Filtragem por Senioridade (Essencial)</h4>
-                    <p>Aplicar filtros de senioridade reduz drasticamente a concorrência.</p>
+                    <p><strong>⚠️ IMPORTANTE:</strong> Após testes, descobrimos que o LinkedIn tem limitações:</p>
+                    <ul>
+                        <li>✅ Use <strong>filtros visuais</strong> do LinkedIn para senioridade (Entry level, Mid-Senior)</li>
+                        <li>❌ Evite colocar muitos termos de senioridade na query (quebra a busca)</li>
+                        <li>✅ Máximo 2 OR por grupo na query</li>
+                    </ul>
                     <div class="code-block">
-                        <code>"React" AND ("Pleno" OR "Pl" OR "Mid")</code>
+                        <code>(laravel OR php) AND hiring</code>
                     </div>
-                    <div class="code-block">
-                        <code>"React" AND NOT ("Junior" OR "Jr")</code>
-                    </div>
+                    <p><small style="color: var(--text-secondary);">Query simples + filtros visuais = melhores resultados</small></p>
                     <div class="impact-box">
-                        <strong>Impacto real:</strong> 2.719 vagas → 56 vagas<br>
-                        <span class="small-text">Mesmas empresas, muito menos concorrência</span>
+                        <strong>Resultado:</strong> Queries simples retornam mais vagas<br>
+                        <span class="small-text">LinkedIn prefere queries curtas e filtros visuais</span>
                     </div>
                 </div>
                 <div class="card" id="filtro-data">
@@ -114,31 +352,24 @@
                     </div>
                 </div>
                 <div class="card">
-                    <h4>Query Base para Publicações</h4>
+                    <h4>Queries Funcionais para Publicações</h4>
                     <div class="code-block">
-                        <code>"Sua_tecnologia" AND "Vaga" AND ("Jr" OR "Junior" OR "Entry")</code>
+                        <code>(laravel OR php) AND hiring</code>
+                    </div>
+                    <div class="code-block">
+                        <code>(node OR javascript) AND hiring</code>
+                    </div>
+                    <div class="code-block">
+                        <code>(backend OR "software engineer") AND hiring</code>
                     </div>
                     <h5>Passo a Passo:</h5>
                     <ol class="steps">
-                        <li>Cole a query na busca do LinkedIn</li>
+                        <li>Cole uma das queries na busca do LinkedIn</li>
                         <li>Selecione <strong>Publicações</strong></li>
                         <li>Ordene por <strong>Mais recentes</strong></li>
+                        <li>Use <strong>filtros visuais</strong> para refinar por localização se necessário</li>
                     </ol>
-                </div>
-                <div class="card">
-                    <h4>Queries Prontas</h4>
-                    <div class="query-section">
-                        <h5>🇧🇷 Vagas Nacionais (Júnior):</h5>
-                        <div class="code-block">
-                            <code>"Sua_tecnologia" AND "Vaga" AND NOT ("Pleno" OR "Senior" OR "Sr")</code>
-                        </div>
-                    </div>
-                    <div class="query-section">
-                        <h5>🌎 Vagas Internacionais:</h5>
-                        <div class="code-block">
-                            <code>"Sua_tecnologia" AND "hiring" AND "Latam" AND ("Junior" OR "Jr")</code>
-                        </div>
-                    </div>
+                    <p><strong>💡 Regra de ouro:</strong> Máximo 2 OR por grupo, senioridade nos filtros visuais!</p>
                 </div>
             </section>
 
@@ -194,50 +425,75 @@
                             <span>Qualquer termo</span>
                         </div>
                         <div class="operator-item">
-                            <code>NOT</code>
-                            <span>Excluir termo</span>
+                            <code>-</code>
+                            <span>Excluir termo (use em Google/DuckDuckGo)</span>
                         </div>
                     </div>
-                    <div class="note-box">
-                        <strong>Nota:</strong> Campo de posts tem limite aproximado de 70 caracteres
+                    <div class="warning-box">
+                        <strong>⚠️ LinkedIn:</strong> Máximo 2 OR por grupo! Ex: (laravel OR php) funciona, mas (php OR laravel OR symfony OR yii) quebra a busca.
                     </div>
                 </div>
-                <div class="card">
-                    <h4>Query Avançada (Exemplo Real)</h4>
-                    <p>O operador <code>-</code> funciona melhor que <code>AND NOT</code> em publicações:</p>
+                <div class="card highlight-card">
+                    <h4>🔥 Descoberta: Limitações do LinkedIn vs Google/DuckDuckGo</h4>
+                    <p><strong>LinkedIn:</strong> Motor de busca simplificado</p>
+                    <ul>
+                        <li>✅ Queries curtas funcionam: <code>(laravel OR php) AND hiring</code></li>
+                        <li>❌ Queries longas quebram: muitos OR, muitas aspas, senioridade + stack juntos</li>
+                        <li>✅ Use filtros visuais para senioridade e localização</li>
+                    </ul>
+                    <p style="margin-top: 1rem;"><strong>Google/DuckDuckGo:</strong> Motor completo</p>
+                    <ul>
+                        <li>✅ Aceita queries complexas com vários OR</li>
+                        <li>✅ Operador "-" funciona perfeitamente</li>
+                        <li>✅ Pode combinar stack + senioridade + exclusões</li>
+                    </ul>
                     <div class="code-block multiline">
-                        <code>"vaga" AND "Java" AND "Spring Boot"<br>
-("Junior" OR "JR" OR "Entry")<br>
--Senior -SR -PL -Mid -Pleno -Lead -hibrido -presencial -hola</code>
+                        <code>("PHP" OR "Laravel" OR "JavaScript" OR "Node") AND ("job" OR "vaga") AND ("Junior" OR "Pleno") -Senior -Lead -Staff -site:linkedin.com</code>
                     </div>
-                    <div class="advantages">
-                        <strong>Vantagens:</strong>
-                        <ul>
-                            <li>Não estoura limite de caracteres</li>
-                            <li>Filtros mais agressivos</li>
-                            <li>Resultados mais limpos</li>
-                        </ul>
-                    </div>
-                    <p class="warning-text">⚠️ Palavras com acento não são filtradas corretamente</p>
+                    <p><small style="color: var(--text-secondary);">☝️ Query acima funciona no Google, mas quebraria no LinkedIn!</small></p>
                 </div>
+                
+                <div class="card">
+                    <h3>🤖 Como Montar Queries com IA (Copilot/ChatGPT)</h3>
+                    <p>Use este prompt para ajudar a criar queries otimizadas:</p>
+                    <div class="code-block multiline" style="background: var(--bg-secondary); padding: 1rem; border-left: 3px solid var(--accent-color);">
+                        <code>Quero montar uma query para o LinkedIn.
+
+Tecnologia principal: [sua tech]
+Tecnologia secundária: [se houver]
+Tipo de vaga: [cargo ou stack]
+Vou usar senioridade no texto ou nos filtros do LinkedIn? [escolha]
+Quero focar em posts de recrutadores? [sim/não]
+
+Gere:
+- 1 query segura (alta chance de funcionar)
+- 1 query mais ampla (mais resultados)
+- 1 query alternativa focada em cargo
+
+Explique rapidamente o motivo de cada query e quais ajustes foram feitos.</code>
+                    </div>
+                </div>
+
                 <div class="section-title">
                     <h3>📅 Estratégia de Rotina (Playbook)</h3>
                 </div>
                 <div class="routine-grid">
                     <div class="card routine-card">
-                        <h4>📆 Diário (30-40 minutos)</h4>
+                        <h4>📆 Diário (15 minutos)</h4>
                         <ul>
-                            <li>LinkedIn → Publicações → Mais recentes</li>
-                            <li>Executar 2-3 queries bem ajustadas</li>
-                            <li>Candidatar-se rapidamente</li>
+                            <li>Use aba <strong>Procura Diária</strong></li>
+                            <li>3 queries LinkedIn Posts</li>
+                            <li>2 queries LinkedIn Jobs</li>
+                            <li>1 query Google (sites empresas)</li>
                         </ul>
                     </div>
                     <div class="card routine-card">
-                        <h4>📊 Semanal</h4>
+                        <h4>📊 Semanal (30-40 min)</h4>
                         <ul>
-                            <li>Ajustar queries</li>
-                            <li>Salvar buscas no LinkedIn</li>
-                            <li>Executar buscas no Google</li>
+                            <li>Use aba <strong>Procura Semanal</strong></li>
+                            <li>DuckDuckGo + query híbrida</li>
+                            <li>Plataformas internacionais</li>
+                            <li>Ajustar e otimizar queries</li>
                         </ul>
                     </div>
                 </div>
@@ -264,19 +520,6 @@
                 </div>
             </section>
 
-            <section id="outros" class="tab-content">
-                <h2>Outras Plataformas</h2>
-                <div class="content-placeholder">
-                    <p>Conteúdo sobre outras plataformas será adicionado aqui...</p>
-                </div>
-            </section>
-
-            <section id="dicas" class="tab-content">
-                <h2>Dicas Gerais</h2>
-                <div class="content-placeholder">
-                    <p>Dicas gerais de busca de vagas serão adicionadas aqui...</p>
-                </div>
-            </section>
         </main>
 
     <footer>
